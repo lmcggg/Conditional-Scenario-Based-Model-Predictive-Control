@@ -1,6 +1,8 @@
 # Conditional Scenario-Based Model Predictive Control (CSB-MPC)
 
-This repository contains a MATLAB implementation of the Conditional Scenario-Based Model Predictive Control (CSB-MPC) algorithm. The implementation is based on the mathematical derivation provided in the paper "Conditional scenario-based model predictive control".
+This repository contains a MATLAB implementation of the Conditional Scenario-Based Model Predictive Control (CSB-MPC) algorithm. 
+
+The implementation is based on the mathematical derivation provided in the paper "Conditional scenario-based model predictive control"-Edwin González∗, Javier Sanchis, José Vicente Salcedo,Miguel Andrés Martínez.
 
 ## Overview
 
@@ -20,12 +22,12 @@ CSB-MPC is an advanced control technique that handles systems with uncertainties
 ## Requirements
 
 - MATLAB (R2018b or newer recommended)
-- Optimization toolbox (for solving the CSB-MPC optimization problem)
+- cvx toolbox (for solving the CSB-MPC optimization problem)
 - Statistics and Machine Learning Toolbox (for `mvnrnd` function)
 
 ## Implementation Details
 
-### Example 1 (Pure Additive Disturbance)
+### Example  (Pure Additive Disturbance from paper)
 
 The current implementation focuses on Example 1 from the paper, which features:
 - Second-order discrete system with pure additive disturbance
@@ -59,18 +61,31 @@ where δ_i is a random vector following a truncated multivariate normal distribu
 - Number of subintervals for each random variable (E): 7
 - Number of conditional scenarios (C): n_delta * E = 14
 
-### Performance Metrics
+### Performance 
+![image](https://github.com/user-attachments/assets/1a39273c-def8-4d65-9666-e6e014f7c0fe)
 
-The implementation provides several performance metrics:
-- Computational efficiency (execution time per step)
-- Constraint violation frequency
-- Control performance (state and input costs)
-- State trajectory visualizations
-- Control input profiles
+![image](https://github.com/user-attachments/assets/da5c1acf-ac6b-4bd2-a0c9-97213599ac71)
+
+![image](https://github.com/user-attachments/assets/dd0f72d4-2150-4a69-b762-065940068792)
+
+![image](https://github.com/user-attachments/assets/8c72b28c-0f61-44ed-a029-fc9bfa52d512)
+ 
+  State x2 violations: 0 (0.00%)
+  
+  Input u violations: 0 (0.00%)
+  
+  Cost metrics:
+  
+    State cost: 437.74
+   
+    Input cost: 0.24
+   
+    Total cost: 437.98
+
 
 ## Usage
 
-To run the CSB-MPC implementation for Example 1:
+To run the CSB-MPC implementation for Example:
 ```matlab
 csb_mpc_receding_horizon
 ```
@@ -81,6 +96,4 @@ This will execute the full receding horizon control simulation and display the r
 - Control increments
 - Performance analysis (constraint violations and cost metrics)
 
-## References
 
-Lucia, S., Subramanian, S., & Engell, S. (2022). Conditional scenario-based model predictive control. International Journal of Robust and Nonlinear Control, 32(11), 6410-6428. 
